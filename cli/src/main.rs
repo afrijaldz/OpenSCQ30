@@ -11,8 +11,7 @@ use openscq30_lib::OpenSCQ30Session;
 use tracing::level_filters::LevelFilter;
 use tracing_subscriber::EnvFilter;
 
-#[tokio::main]
-async fn main() -> ExitCode {
+fn main() -> ExitCode {
     let matches = cli::build().get_matches();
 
     if let Err(err) = initialize_logging(&matches) {
@@ -20,6 +19,25 @@ async fn main() -> ExitCode {
         return ExitCode::FAILURE;
     }
 
+    let run = move || {
+        tokio::runtime::Builder::new_current_thread()
+            .enable_all()
+            .build()
+            .expect("failed to build tokio runtime")
+            .block_on(run(matches))
+    };
+    // IOBluetooth needs the main thread to be running a run loop, so we have to work in another thread
+    #[cfg(target_os = "macos")]
+    {
+        openscq30_lib::run_with_main_run_loop(run)
+    }
+    #[cfg(not(target_os = "macos"))]
+    {
+        run()
+    }
+}
+
+async fn run(matches: ArgMatches) -> ExitCode {
     if let Err(err) = cli::handle(&matches).await {
         if matches.get_count("verbose") > 0 || matches.get_flag("debug-errors") {
             eprintln!("Error: {err:?}");

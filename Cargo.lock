@@ -4147,6 +4147,7 @@ dependencies = [
  "async-trait",
  "bitflags 2.13.1",
  "bluer",
+ "cc",
  "futures",
  "hex",
  "i18n-embed",

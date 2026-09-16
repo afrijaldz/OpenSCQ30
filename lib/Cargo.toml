@@ -64,6 +64,14 @@ windows = { workspace = true, features = [
     "Networking_Sockets",
 ] }
 
+[target.'cfg(target_os = "macos")'.dependencies]
+# macOS ships an old sqlite that lacks features used by the migrations
+rusqlite = { workspace = true, features = ["bundled"] }
+tokio = { workspace = true, features = ["rt-multi-thread"] }
+
+[target.'cfg(target_os = "macos")'.build-dependencies]
+cc = "1"
+
 [target.'cfg(target_os = "android")'.dependencies]
 rusqlite = { workspace = true, features = ["bundled"] }
 rust-embed = { workspace = true, features = ["debug-embed"] }
