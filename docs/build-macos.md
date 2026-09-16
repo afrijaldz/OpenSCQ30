@@ -14,6 +14,19 @@ cargo build --release -p openscq30-gui
 
 The binaries will be at `target/release/openscq30` and `target/release/openscq30-gui`.
 
+## App bundle
+
+To get an `OpenSCQ30.app` that can be put in `/Applications` and launched from Spotlight or
+Launchpad:
+
+```sh
+just build-gui
+just build-gui-app
+```
+
+This creates `build-output/OpenSCQ30.app` with an ad-hoc code signature. Alternatively, run
+`packaging/macos/build.sh` directly after copying `openscq30-gui` to `build-output/`.
+
 ## How the macOS backend works
 
 Bluetooth connections go through Apple's IOBluetooth framework, using a small Objective-C shim in

@@ -33,6 +33,12 @@ build-gui-installer: create-build-output-dir
     ./packaging/windows/build.sh
     cp packaging/windows/Output/openscq30-gui-installer.exe '{{ build-output-dir }}/'
 
+[doc("Build the macOS app bundle. The gui must be built first.")]
+[group("build")]
+[macos]
+build-gui-app: create-build-output-dir
+    ./packaging/macos/build.sh
+
 [doc("Run a fully optimized release build")]
 [group("build")]
 build-cli features='': create-build-output-dir

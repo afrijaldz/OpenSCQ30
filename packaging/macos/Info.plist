@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleName</key>
+	<string>OpenSCQ30</string>
+	<key>CFBundleDisplayName</key>
+	<string>OpenSCQ30</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.oppzippy.OpenSCQ30</string>
+	<key>CFBundleVersion</key>
+	<string>@VERSION@</string>
+	<key>CFBundleShortVersionString</key>
+	<string>@VERSION@</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleExecutable</key>
+	<string>openscq30-gui</string>
+	<key>CFBundleIconFile</key>
+	<string>OpenSCQ30</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>12.0</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>OpenSCQ30 connects to your Soundcore device over Bluetooth to read and change its settings.</string>
+</dict>
+</plist>
